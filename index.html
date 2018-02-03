@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>F The Radio</title>
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/player.css">
+    <link rel="icon" href="img/favicon.png" type="image/gif">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,900" rel="stylesheet">
+  </head>
+<body>
+
+<div class="about">
+  <img src="img/logo_w.png" alt="ftheradio" class="logo">
+  <p class="paragraph-about">F The Radio is 100% independent underground <nobr>hip hop</nobr> online radio broadcasting straight outta <nobr>Kyiv, Ukraine.</nobr> We're showing you how hip hop has grown in  the last 40 years into something more than just music, it's a part of our every day living, the soundtrack for alot of lives. Just press play and join us on this journey through the beautiful world of sound.</p>
+</div>
+
+  <div class="player-container">
+  <div id="rj-player">
+   <div class="player-v3 player-medium">
+    <div class="info">
+     <div class="rjp-trackinfo-container">
+      <p class="rjp-label">Now playing :</p>
+      <p id="trackInfo" class="rjp-info"></p>
+     </div>
+     <div class="rjp-player-container">
+      <div id="rjp-radiojar-player"></div>
+      <div id="rj-player-controls" class="rj-player-controls">
+       <div class="jp-gui jp-interface">
+        <div class="jp-controls">
+         <a href="javascript:;" style="display:block" class="jp-play" title="Play">&nbsp;<i class="icon-play"></i></a>
+         <a href="javascript:;" style="display:none" class="jp-pause" title="Pause"><i class="icon-pause"></i></a>
+         <a href="javascript:;" style="display:block" class="jp-mute"  title="Mute"><i class="icon-volume-up"></i></a>
+         <a href="javascript:;" style="display:none" class="jp-unmute" title="Unmute"><i class="icon-volume-off"></i></a>
+         <div class="jp-volume-bar-wrapper">
+          <div class="jp-volume-bar">
+           <div class="jp-volume-bar-value"></div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="jp-no-solution">
+       <span>Update Required</span>
+       To play the media you will need to either update your browser to a recent version or update your
+        <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  </div>
+
+
+<nav class="footer">
+  <!-- <button  id="modal-button__two" class="button-about click-to-open" data-modal="modal-window__two">
+    <span>About</span>
+  </button> -->
+  <button id="modal-button__one" class="button click-to-open" data-modal="modal-window__one">
+    <span>Donate</span>
+  </button>
+
+  <div id="modal-window__one" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h4>Support project</h4>
+      </div>
+      <div class="modal-body">
+        <p class="modal-paragraph">If you like what we're doing you can help us out with a donation. The easiest way to donate is to use the credit card <b>5168 7572 2083 4586</b>. Don't forget to join us on our <a href="#">Facebook</a> page to keep up with new music, videos, live concerts, documentaries, and more. Peace.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-window__two" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h4>About</h4>
+      </div>
+      <div class="modal-body">
+        <p class="modal-paragraph">
+        <b>F The Radio</b> is 100% independent underground <nobr>hip hop</nobr> online radio brodcasting strait outta <nobr>Kyiv, Ukraine.</nobr> We're showing you how hip hop has grown in  the last 40 years into something more than just music, it's a part of our every day living, the soundtrack for alot of lives. Just press play and join us on this journey through the beautiful world of sound.
+      </p>
+      </div>
+    </div>
+  </div>
+
+    <a href="https://www.facebook.com/theradiof/" target="_blank">
+        <button class="button-fb"><span>Facebook</span></button>
+    </a>
+
+<div class="tag">KYIV 2018</div>
+</nav>
+
+<script type="text/javascript">
+  var btn = document.getElementsByClassName("click-to-open");
+  for (var i = 0; i < btn.length; i++) {
+    var thisBtn = btn[i];
+    thisBtn.addEventListener("click", function(){
+      var modal = document.getElementById(this.dataset.modal);
+      modal.style.display = "block";
+    }, false);
+  }
+
+  var aboutModal = document.getElementById('modal-window__one');
+  var donateModal = document.getElementById('modal-window__two');
+  window.onclick = function(event) {
+    if (event.target == aboutModal) {
+        aboutModal.style.display = "none";
+    }
+    if (event.target == donateModal) {
+        donateModal.style.display = "none";
+    }
+  }
+  var spans = document.getElementsByClassName("close");
+  for (var i = 0; i < spans.length; i++) {
+    var span = spans[i]
+    span.onclick = function() {
+        aboutModal.style.display = "none";
+        donateModal.style.display = "none";
+    }
+  }
+</script>
+
+
+<script type="text/javascript" src="https://www.radiojar.com/wrappers/api-plugins/v1/radiojar-min.js">
+</script>
+
+<script>
+ rjq('#rjp-radiojar-player').radiojar('player', {
+  "streamName": "8asend4zmy5tv",
+  "enableUpdates": true,
+  "autoplay": true
+ });
+ rjq('#rjp-radiojar-player').off('rj-track-load-event');
+ rjq('#rjp-radiojar-player').on('rj-track-load-event', function(event, data) {
+   updateInfo(data);
+   if (data.title != "" || data.artist != "") {
+     rjq('.rjp-trackinfo-container').show();
+     rjq('#trackInfo').html(data.artist + ' - "' + data.title + '"')
+   } else {
+     rjq('.rjp-trackinfo-container').hide();
+   }
+ });
+
+ function updateInfo(data) {
+   if (data.thumb) {
+     rjq('#rj-cover').html('<a href="#"><img src="' + data.thumb + '" alt="" title="" /></a>')
+   } else {
+     rjq('#rj-cover').html('')
+   }
+ }
+</script>
+
+<script src="https://use.fontawesome.com/091cc21753.js">
+</script>
+</body>
+</html>
